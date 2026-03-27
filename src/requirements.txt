@@ -1,0 +1,6 @@
+# Requirements for Data Mining Pipeline
+requests
+PyGithub
+python-dotenv
+tqdm
+pandas
