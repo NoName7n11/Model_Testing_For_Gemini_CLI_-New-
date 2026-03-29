@@ -1,0 +1,23 @@
+{
+    "task_id": "kubernetes-issue-137823",
+    "repository": {
+        "name": "kubernetes",
+        "owner": "kubernetes",
+        "language_primary": "Go",
+        "commit_hash_base": "a1293fe6b1e423869a28e35b5b8c297e2a6f3b5f"
+    },
+    "problem_statement": {
+        "title": "Create v1.35.0 API test fixtures",
+        "description": "It looks like we never added v1.35.0 testdata to https://github.com/kubernetes/kubernetes/tree/master/staging/src/k8s.io/api/testdata\n\nBefore releasing 1.36, we need to ensure compatibility with 1.35 data by cloning testdata/HEAD at v1.35.0 to a new directory and ensuring nothing merged to 1.36 impacted round-tripping those types losslessly\n\n/milestone v1.36\n/label release-blocker",
+        "target_files": []
+    },
+    "evaluation_criteria": {
+        "gold_patch": "",
+        "test_patch": "",
+        "success_command": "TODO: Inject repo-specific success command (e.g., 'npm map', 'go test ./...')",
+        "complexity_flags": [
+            "multi-file",
+            "dependency-graph-verified"
+        ]
+    }
+}

@@ -1,0 +1,23 @@
+{
+    "task_id": "next.js-issue-91678",
+    "repository": {
+        "name": "next.js",
+        "owner": "vercel",
+        "language_primary": "TypeScript",
+        "commit_hash_base": "aa3ba7ed15db36f1d21c827dd695a4e24a8955c6"
+    },
+    "problem_statement": {
+        "title": "Turbopack 16.2.0 generates filenames with reserved characters (~~, ...) breaking Enterprise WAF/Nginx rules",
+        "description": "### Link to the code that reproduces this issue\n\nhttps://codesandbox.io/p/devbox/eager-shirley-333t5w\n\n### To Reproduce\n\n1. Use Next.js version `16.2.0`.\n2. Run a production build using Turbopack: `next build`.\n3. Deploy the application behind an Nginx server or a WAF (Web Application Firewall) with standard security hardening rules (e.g., `block_common_exploits.conf`).\n4. Attempt to load the application.\n5. The browser console shows **403 Forbidden** errors for static CSS and JS chunks.\n\n### Current vs. Expected behavior\n\n**Comparison of generated filenames:**\n\n| Version | Filename Example | Naming Strategy | Status |\n| :--- | :--- | :--- | :--- |\n| **16.1.7** | `turbopack-01ca012029ca2e66.js` | Clean Hexadecimal | **PASS** |\n| **16.2.0** | `turbopack-0c3o1svijj_~~.js` | **Reserved (`~~`)** | **FAIL (403)** |\n| **16.2.0** | `0...f7~att2_2.js` | **Reserved (`...` and `~`)** | **FAIL (403)** |\n| **16.2.0** | `0q~2copru0zy0.css` | **Reserved (`~`)** | **FAIL (403)** |\n\n### Provide environment information\n\n```bash\nOperating System:\n  Platform: win32\n  Arch: x64\n  Version: Windows 11 Pro\n  Available memory (MB): 24284\n  Available CPU cores: 12\nBinaries:\n  Node: 24.14.0\n  npm: 11.9.0\n  Yarn: N/A\n  pnpm: N/A\nRelevant Packages:\n  next: 16.2.0\n  eslint-config-next: 16.2.0\n  react: 19.2.4\n  react-dom: 19.2.4\n  typescript: 5.9.3\n```\n\n### Which area(s) are affected? (Select all that apply)\n\nTurbopack\n\n### Which stage(s) are affected? (Select all that apply)\n\nOther (Deployed)\n\n### Additional context\n\n_No response_",
+        "target_files": []
+    },
+    "evaluation_criteria": {
+        "gold_patch": "",
+        "test_patch": "",
+        "success_command": "TODO: Inject repo-specific success command (e.g., 'npm map', 'go test ./...')",
+        "complexity_flags": [
+            "multi-file",
+            "dependency-graph-verified"
+        ]
+    }
+}
