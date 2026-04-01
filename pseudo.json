@@ -1,0 +1,33 @@
+{
+  "task_id": "...", 
+  
+  "repository": {
+    "name": "...",
+    "owner": "...",
+    "language_primary": "...",
+    "commit_hash_base": "..."
+  },
+  
+  "problem_statement": {
+    "title": "...",
+    "description": "...",
+    "target_files": [
+      "...", 
+      "..."
+    ]
+  },
+  
+  "evaluation_criteria": {
+    "gold_patch": "...",
+    "test_patch": "...",
+    "success_command": "...",
+    "complexity_flags": [
+      "...", 
+      "..."
+    ]
+  }
+}
+
+
+
+

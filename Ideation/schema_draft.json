@@ -1,12 +1,10 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema#",
   "title": "Gemini CLI Evaluation Benchmark Dataset Schema",
-  "description": "Schema for complex, multi-file engineering tasks evaluating long-context reasoning.",
   "type": "object",
   "properties": {
     "task_id": {
-      "type": "string",
-      "description": "Unique identifier for the engineering task (e.g., 'argocd-issue-1025')."
+      "type": "string"
     },
     "repository": {
       "type": "object",
@@ -15,8 +13,7 @@
         "owner": { "type": "string" },
         "language_primary": { "type": "string" },
         "commit_hash_base": { 
-          "type": "string", 
-          "description": "The specific Git SHA before the fix/feature was applied, ensuring reproducible state." 
+          "type": "string" 
         }
       },
       "required": ["name", "owner", "language_primary", "commit_hash_base"]
@@ -26,13 +23,11 @@
       "properties": {
         "title": { "type": "string" },
         "description": { 
-          "type": "string",
-          "description": "The exact issue text simulating the user prompt given to the Gemini CLI." 
+          "type": "string"
         },
         "target_files": {
           "type": "array",
-          "items": { "type": "string" },
-          "description": "List of files that the model is expected to modify (optional hint)."
+          "items": { "type": "string" }
         }
       },
       "required": ["title", "description"]
@@ -41,21 +36,17 @@
       "type": "object",
       "properties": {
         "gold_patch": {
-          "type": "string",
-          "description": "The definitive human-written patch (diff) that resolves the issue."
+          "type": "string"
         },
         "test_patch": {
-          "type": "string",
-          "description": "The test harness patch to apply before evaluation (e.g., new unit tests validating the bug or feature)."
+          "type": "string"
         },
         "success_command": {
-          "type": "string",
-          "description": "The build/test command that must pass to mark the CLI's solution as correct."
+          "type": "string"
         },
         "complexity_flags": {
           "type": "array",
-          "items": { "type": "string" },
-          "description": "E.g., ['cross-module', 'API-change', 'deep-dependency-graph']."
+          "items": { "type": "string" }
         }
       },
       "required": ["gold_patch", "test_patch", "success_command"]
